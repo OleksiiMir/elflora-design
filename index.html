@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Elflora — варіанти дизайну сайту</title>
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:wght@400;500;700&family=Unbounded:wght@500;700;800&display=swap">
+<style>
+:root { --ink: #231c1e; --muted: #6a5f61; --bar: rgba(255,255,255,.86); --line: rgba(35,28,30,.12); --accent: #7a1b2b; --stage: #ece7e5; }
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font-family: "Manrope", "Segoe UI", system-ui, sans-serif; background: var(--stage); color: var(--ink); padding-top: calc(72px + env(safe-area-inset-top, 0px)); }
+[hidden] { display: none !important; }
+.switch { position: fixed; z-index: 100; top: calc(12px + env(safe-area-inset-top, 0px)); left: 50%; transform: translateX(-50%); display: flex; gap: 6px; align-items: center; padding: 6px; border-radius: 999px; background: var(--bar); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 8px 28px rgba(35,28,30,.16), 0 0 0 1px var(--line); max-width: calc(100vw - 24px); }
+.group { display: flex; gap: 2px; }
+.sep { width: 1px; height: 24px; background: var(--line); margin: 0 4px; }
+.switch button { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--muted); white-space: nowrap; }
+.switch button:hover { color: var(--ink); }
+.switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.switch button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.dot { width: 14px; height: 14px; border-radius: 7px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); flex: none; }
+.ic { width: 18px; height: 18px; }
+.stage { display: flex; justify-content: center; padding-bottom: 40px; }
+.view { background: #fff; box-shadow: 0 10px 40px rgba(35,28,30,.12); }
+.view.mob { width: 390px; border-radius: 28px; overflow: clip; }
+.sc-a a { color: #2b1f22; } .sc-b a { color: #e8d9bf; } .sc-c a { color: #16110f; }
+.view button { color: inherit; }
+@media (max-width: 640px) {
+  body { padding-top: calc(64px + env(safe-area-inset-top, 0px)); }
+  .switch { gap: 2px; padding: 4px; }
+  .switch button { height: 36px; padding: 0 11px; font-size: 13px; }
+  .switch .name, .switch .devname { display: none; }
+  .stage { padding-bottom: 0; }
+  .view.mob { width: 100%; border-radius: 0; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+<nav class="switch" aria-label="Варіант дизайну">
+  <div class="group" role="group" aria-label="Варіант">
+    <button type="button" data-k="a" aria-pressed="true"><span class="dot" style="background: linear-gradient(90deg,#f7f1e8 50%,#7a1b2b 50%)"></span>A<span class="name">&nbsp;· Editorial</span></button>
+    <button type="button" data-k="b" aria-pressed="false"><span class="dot" style="background: linear-gradient(90deg,#14281e 50%,#d9a066 50%)"></span>B<span class="name">&nbsp;· Botanical</span></button>
+    <button type="button" data-k="c" aria-pressed="false"><span class="dot" style="background: linear-gradient(90deg,#ffd6e2 50%,#dfe6d3 50%)"></span>C<span class="name">&nbsp;· Modern</span></button>
+  </div>
+  <span class="sep" aria-hidden="true"></span>
+  <div class="group" role="group" aria-label="Пристрій">
+    <button type="button" data-v="desk" aria-pressed="true" aria-label="Компʼютер"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M8 20h8M12 16v4"></path></svg><span class="devname">Компʼютер</span></button>
+    <button type="button" data-v="mob" aria-pressed="false" aria-label="Телефон"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"></rect><path d="M11 18h2"></path></svg><span class="devname">Телефон</span></button>
+  </div>
+</nav>
+<main class="stage" id="stage"></main>
+
+<template id="desk-a"><div style="width: 1440px; box-sizing: border-box; background: #f7f1e8; color: #2b1f22; font-family: Manrope, sans-serif; display: flex; flex-direction: column;">
+
+<div style="background: #7a1b2b; color: #f7f1e8; font-size: 13px; letter-spacing: 0.04em; padding: 10px 80px; display: flex; justify-content: space-between;">
+<span>Доставка по місту в день замовлення · фото букета перед відправкою</span>
+<span style="display: flex; gap: 24px;"><span>Квіти Elflora · Кропивницький</span><a href="tel:+380993666044" style="color: inherit; text-decoration: none; white-space: nowrap;">+38 (099) 366-60-44</a><a href="mailto:info@elflora.com.ua" style="color: inherit; text-decoration: none;">info@elflora.com.ua</a></span>
+</div>
+
+<header style="padding: 24px 80px; display: flex; align-items: center; gap: 48px; border-bottom: 1px solid #e4d8c8;">
+<a href="#" tabindex="-1" aria-label="Elflora — на головну" style="display: flex; align-items: center;"><img src="img/logo.png" alt="Elflora — квіти, Кропивницький" style="height: 64px; width: auto; display: block;"></a>
+<nav style="display: flex; gap: 32px; font-size: 15px; font-weight: 500; flex-grow: 1;">
+<a href="#" tabindex="-1" style="color: #2b1f22; text-decoration: none;">Букети</a>
+<a href="#" tabindex="-1" style="color: #2b1f22; text-decoration: none;">Троянди</a>
+<a href="#" tabindex="-1" style="color: #2b1f22; text-decoration: none;">Композиції в коробках</a>
+<a href="#" tabindex="-1" style="color: #2b1f22; text-decoration: none;">Подарунки</a>
+<a href="#" tabindex="-1" style="color: #2b1f22; text-decoration: none;">Весільна флористика</a>
+</nav>
+<label style="display: flex; align-items: center; gap: 8px; border: 1px solid #d9c9b5; padding: 10px 16px; width: 240px; background: #fffaf3;">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b5a55" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+<input type="search" placeholder="Пошук букета" aria-label="Пошук" style="border: 0; background: transparent; font: inherit; font-size: 14px; outline: none; width: 100%;">
+</label>
+<button type="button" aria-label="Кошик, 2 товари" style="position: relative; width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer;">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2b1f22" stroke-width="1.8" aria-hidden="true"><path d="M5 8h14l-1 12H6z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>
+<span style="position: absolute; top: 4px; right: 2px; background: #7a1b2b; color: #fff; font-size: 11px; font-weight: 700; width: 18px; height: 18px; border-radius: 9px; display: flex; align-items: center; justify-content: center;">2</span>
+</button>
+</header>
+
+<section style="padding: 64px 80px 56px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; align-items: center;">
+<div style="display: flex; flex-direction: column; gap: 28px;">
+<div style="font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; color: #7a1b2b; font-weight: 600;">Колекція «Осінній сад»</div>
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 84px; line-height: 0.98; letter-spacing: -0.01em;">Квіти,<br>що <i style="color: #7a1b2b;">говорять</i><br>замість вас</h1>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #5a4a46; max-width: 480px;">Авторські букети від флористів EL FLORA. Зберемо, сфотографуємо й доставимо в зручний час — з листівкою вашими словами.</p>
+<div style="display: flex; gap: 16px;">
+<a href="#" tabindex="-1" style="background: #7a1b2b; color: #fff; text-decoration: none; padding: 18px 36px; font-weight: 600; font-size: 15px; letter-spacing: 0.04em;">Обрати букет</a>
+<a href="#" tabindex="-1" style="border: 1px solid #7a1b2b; color: #7a1b2b; text-decoration: none; padding: 18px 32px; font-weight: 600; font-size: 15px;">Зібрати свій</a>
+</div>
+</div>
+<div style="position: relative; height: 560px; background: #ecdcc8; display: flex; align-items: center; justify-content: center;">
+<img src="img/buket-nebesna-nizhnist.jpg" alt="Букет «Небесна ніжність»" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+<div style="position: absolute; left: -32px; bottom: 40px; background: #fffaf3; padding: 18px 22px; box-shadow: 0 12px 32px rgba(43,31,34,0.12); display: flex; flex-direction: column; gap: 4px;">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600;">«Небесна ніжність»</span>
+<span style="font-size: 14px; color: #5a4a46;">Гортензія, кущові троянди</span>
+</div>
+</div>
+</section>
+
+<section style="padding: 0 80px 40px; display: flex; gap: 12px; align-items: center;">
+<span style="font-size: 14px; color: #5a4a46; margin-right: 8px;">Привід:</span>
+<button type="button" style="border: 1px solid #7a1b2b; background: #7a1b2b; color: #fff; padding: 10px 20px; font: inherit; font-size: 14px; border-radius: 999px;">Усі</button>
+<button type="button" style="border: 1px solid #d9c9b5; background: transparent; color: #2b1f22; padding: 10px 20px; font: inherit; font-size: 14px; border-radius: 999px;">День народження</button>
+<button type="button" style="border: 1px solid #d9c9b5; background: transparent; color: #2b1f22; padding: 10px 20px; font: inherit; font-size: 14px; border-radius: 999px;">Кохання</button>
+<button type="button" style="border: 1px solid #d9c9b5; background: transparent; color: #2b1f22; padding: 10px 20px; font: inherit; font-size: 14px; border-radius: 999px;">Подяка</button>
+<button type="button" style="border: 1px solid #d9c9b5; background: transparent; color: #2b1f22; padding: 10px 20px; font: inherit; font-size: 14px; border-radius: 999px;">Вибачення</button>
+<button type="button" style="border: 1px solid #d9c9b5; background: transparent; color: #2b1f22; padding: 10px 20px; font: inherit; font-size: 14px; border-radius: 999px;">Для мами</button>
+</section>
+
+<section style="padding: 0 80px 72px; display: flex; flex-direction: column; gap: 28px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline;">
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 48px;">Хіти тижня</h2>
+<a href="#" tabindex="-1" style="font-size: 15px; font-weight: 600;">Увесь каталог →</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px;">
+
+<article style="display: flex; flex-direction: column; gap: 12px; height: 100%; box-sizing: border-box; padding: 12px 12px 16px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06);">
+<div style="position: relative; height: 320px; background: #ecdcc8; display: flex; align-items: center; justify-content: center;">
+<img src="img/DSC05407.jpg" alt="Закоханість" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+<span style="position: absolute; top: 14px; left: 14px; background: #fffaf3; color: #7a1b2b; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 10px;">Хіт</span>
+</div>
+<div style="padding: 4px 4px 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
+<h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; line-height: 1.12; min-height: 2.24em;">Закоханість</h3>
+<span style="font-size: 17px; font-weight: 700; white-space: nowrap; padding-top: 4px;">4 528 ₴</span>
+</div>
+<span style="padding: 0 4px; font-size: 14px; color: #5a4a46;">Троянди, гортензія</span>
+<button type="button" style="margin-top: auto; border: 1px solid #2b1f22; background: transparent; padding: 13px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;">В кошик</button>
+</article>
+
+<article style="display: flex; flex-direction: column; gap: 12px; height: 100%; box-sizing: border-box; padding: 12px 12px 16px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06);">
+<div style="position: relative; height: 320px; background: #efe2d6; display: flex; align-items: center; justify-content: center;">
+<img src="img/DSC07365.jpg" alt="Кохання в кожній троянді" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+<span style="position: absolute; top: 14px; left: 14px; background: #fffaf3; color: #7a1b2b; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 10px;">Новинка</span>
+</div>
+<div style="padding: 4px 4px 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
+<h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; line-height: 1.12; min-height: 2.24em;">Кохання в кожній троянді</h3>
+<span style="font-size: 17px; font-weight: 700; white-space: nowrap; padding-top: 4px;">2 449 ₴</span>
+</div>
+<span style="padding: 0 4px; font-size: 14px; color: #5a4a46;">Червоні троянди</span>
+<button type="button" style="margin-top: auto; border: 1px solid #2b1f22; background: transparent; padding: 13px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;">В кошик</button>
+</article>
+
+<article style="display: flex; flex-direction: column; gap: 12px; height: 100%; box-sizing: border-box; padding: 12px 12px 16px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06);">
+<div style="position: relative; height: 320px; background: #f1e4cc; display: flex; align-items: center; justify-content: center;">
+<img src="img/DSC08769.jpg" alt="Відтінки щастя" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+
+</div>
+<div style="padding: 4px 4px 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
+<h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; line-height: 1.12; min-height: 2.24em;">Відтінки щастя</h3>
+<span style="font-size: 17px; font-weight: 700; white-space: nowrap; padding-top: 4px;">3 875 ₴</span>
+</div>
+<span style="padding: 0 4px; font-size: 14px; color: #5a4a46;">Мікс сезонних квітів</span>
+<button type="button" style="margin-top: auto; border: 1px solid #2b1f22; background: transparent; padding: 13px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;">В кошик</button>
+</article>
+
+<article style="display: flex; flex-direction: column; gap: 12px; height: 100%; box-sizing: border-box; padding: 12px 12px 16px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06);">
+<div style="position: relative; height: 320px; background: #e9e1e4; display: flex; align-items: center; justify-content: center;">
+<img src="img/DSC06107.jpg" alt="Валентинка" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+
+</div>
+<div style="padding: 4px 4px 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;">
+<h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; line-height: 1.12; min-height: 2.24em;">Валентинка</h3>
+<span style="font-size: 17px; font-weight: 700; white-space: nowrap; padding-top: 4px;">6 637 ₴</span>
+</div>
+<span style="padding: 0 4px; font-size: 14px; color: #5a4a46;">Троянди в коробці</span>
+<button type="button" style="margin-top: auto; border: 1px solid #2b1f22; background: transparent; padding: 13px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;">В кошик</button>
+</article>
+
+</div>
+</section>
+
+<section style="margin: 0 80px; padding: 48px 56px; background: #fffaf3; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px;">
+
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #7a1b2b; line-height: 1;">01</span>
+<span style="font-size: 16px; font-weight: 700;">Фото перед відправкою</span>
+<span style="font-size: 14px; line-height: 1.55; color: #5a4a46;">Надішлемо фото букета у месенджер — затвердите до доставки.</span>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #7a1b2b; line-height: 1;">02</span>
+<span style="font-size: 16px; font-weight: 700;">Доставка в день замовлення</span>
+<span style="font-size: 14px; line-height: 1.55; color: #5a4a46;">Оберіть дату й часовий інтервал на сторінці оформлення.</span>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #7a1b2b; line-height: 1;">03</span>
+<span style="font-size: 16px; font-weight: 700;">Листівка вашими словами</span>
+<span style="font-size: 14px; line-height: 1.55; color: #5a4a46;">Додамо листівку з текстом безкоштовно, можна анонімно.</span>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<span style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #7a1b2b; line-height: 1;">04</span>
+<span style="font-size: 16px; font-weight: 700;">Свіжість гарантуємо</span>
+<span style="font-size: 14px; line-height: 1.55; color: #5a4a46;">Квіти з наших магазинів — свіжі партії щодня.</span>
+</div>
+
+</section>
+
+<section style="padding: 72px 80px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px;">
+
+<figure style="margin: 0; border-top: 1px solid #7a1b2b; padding-top: 24px; display: flex; flex-direction: column; gap: 14px;">
+<blockquote style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 24px; font-style: italic; line-height: 1.35;">«Букет приїхав точно на годину і був навіть кращим, ніж на фото.»</blockquote>
+<figcaption style="font-size: 14px; color: #5a4a46;">Відгук клієнта</figcaption>
+</figure>
+
+<figure style="margin: 0; border-top: 1px solid #7a1b2b; padding-top: 24px; display: flex; flex-direction: column; gap: 14px;">
+<blockquote style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 24px; font-style: italic; line-height: 1.35;">«Замовила з телефона за дві хвилини — дуже зручно.»</blockquote>
+<figcaption style="font-size: 14px; color: #5a4a46;">Відгук клієнта</figcaption>
+</figure>
+
+<figure style="margin: 0; border-top: 1px solid #7a1b2b; padding-top: 24px; display: flex; flex-direction: column; gap: 14px;">
+<blockquote style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 24px; font-style: italic; line-height: 1.35;">«Мама була щаслива. Окреме дякую за листівку.»</blockquote>
+<figcaption style="font-size: 14px; color: #5a4a46;">Відгук клієнта</figcaption>
+</figure>
+
+</section>
+
+<section style="padding: 8px 80px 64px; display: flex; flex-direction: column; gap: 22px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px 16px; flex-wrap: wrap;"><h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 48px; color: #2b1f22;">Подарунки до букета</h2><span style="font-size: 14px; color: #5a4a46;">Додайте в один клік — привеземо разом</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px;">
+<div style="position: relative; overflow: hidden; border-radius: 0; min-height: 190px; background: #fffaf3;"><img src="img/cat-presents.jpg" alt="Подарунки EL FLORA" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></div>
+<a href="#" tabindex="-1" style="text-decoration: none; color: #2b1f22; background: #ffffff; border-radius: 0; padding: 24px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06); display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #f3e3e5; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="M4 7l8 6 8-6"></path></svg></span><span style="font-weight: 700; font-size: 16px;">Листівка</span><span style="font-size: 13px; color: #5a4a46;">безкоштовно</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #2b1f22; background: #ffffff; border-radius: 0; padding: 24px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06); display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #f3e3e5; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 3h6"></path><path d="M10 3c0 3-3 4-3 9a5 5 0 0 0 10 0c0-5-3-6-3-9"></path></svg></span><span style="font-weight: 700; font-size: 16px;">Ваза</span><span style="font-size: 13px; color: #5a4a46;">від 390 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #2b1f22; background: #ffffff; border-radius: 0; padding: 24px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06); display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #f3e3e5; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 10h12l-1.5 9h-9z"></path><path d="M8 10a4 4 0 0 1 8 0"></path></svg></span><span style="font-weight: 700; font-size: 16px;">Солодощі</span><span style="font-size: 13px; color: #5a4a46;">від 250 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #2b1f22; background: #ffffff; border-radius: 0; padding: 24px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06); display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #f3e3e5; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="6"></circle><circle cx="7" cy="6.5" r="2.5"></circle><circle cx="17" cy="6.5" r="2.5"></circle></svg></span><span style="font-weight: 700; font-size: 16px;">Мʼяка іграшка</span><span style="font-size: 13px; color: #5a4a46;">від 450 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #2b1f22; background: #ffffff; border-radius: 0; padding: 24px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06); display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #f3e3e5; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><ellipse cx="9" cy="8" rx="4" ry="5"></ellipse><ellipse cx="16" cy="9" rx="3.5" ry="4.5"></ellipse><path d="M9 13l1 8M16 13.5l-2 7.5"></path></svg></span><span style="font-weight: 700; font-size: 16px;">Повітряні кульки</span><span style="font-size: 13px; color: #5a4a46;">від 90 ₴</span></a>
+</div>
+</section>
+<footer style="margin-top: auto; background: #2b1f22; color: #e9dccd; padding: 40px 80px; display: flex; justify-content: space-between; font-size: 14px;">
+<a href="#" tabindex="-1" aria-label="Elflora — на головну" style="display: flex; align-items: center; background: #f7f1e8; border-radius: 999px; padding: 2px 14px;"><img src="img/logo.png" alt="Elflora — квіти, Кропивницький" style="height: 44px; width: auto; display: block;"></a>
+<span style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: flex-end;"><span>м. Кропивницький</span><a href="tel:+380993666044" style="color: inherit; text-decoration: none; white-space: nowrap;">+38 (099) 366-60-44</a><a href="mailto:info@elflora.com.ua" style="color: inherit; text-decoration: none;">info@elflora.com.ua</a><span>Доставка · Оплата · Публічна оферта</span></span>
+</footer>
+</div></template>
+<template id="mob-a"><div style="width: 390px; box-sizing: border-box; background: #f7f1e8; color: #2b1f22; font-family: Manrope, sans-serif; display: flex; flex-direction: column; position: relative; box-shadow: 0 0 0 1px rgba(0,0,0,0.06);">
+<div style="background: #7a1b2b; color: #f7f1e8; font-size: 12px; padding: 8px 16px; text-align: center;">Кропивницький · <a href="tel:+380993666044" style="color: inherit; text-decoration: none; white-space: nowrap;">+38 (099) 366-60-44</a></div>
+<header style="padding: 12px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #e4d8c8;">
+<button type="button" aria-label="Меню" style="width: 44px; height: 44px; border: 0; background: transparent;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2b1f22" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+<a href="#" tabindex="-1" aria-label="Elflora — на головну" style="display: flex; align-items: center; flex-grow: 1; justify-content: center;"><img src="img/logo.png" alt="Elflora — квіти, Кропивницький" style="height: 40px; width: auto; display: block;"></a>
+<button type="button" aria-label="Пошук" style="width: 44px; height: 44px; border: 0; background: transparent;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2b1f22" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></button>
+</header>
+<section style="padding: 24px 16px; display: flex; flex-direction: column; gap: 16px;">
+<div style="position: relative; overflow: hidden; height: 300px; background: #ecdcc8; display: flex; align-items: center; justify-content: center;">
+<img src="img/buket-nebesna-nizhnist.jpg" alt="Букет «Небесна ніжність»" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+</div>
+<div style="font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #7a1b2b; font-weight: 600;">Колекція «Осінній сад»</div>
+<h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 44px; line-height: 1;">Квіти, що <i style="color: #7a1b2b;">говорять</i> замість вас</h1>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5a4a46;">Зберемо, сфотографуємо й доставимо в зручний час — з листівкою вашими словами.</p>
+<a href="#" tabindex="-1" style="background: #7a1b2b; color: #fff; text-decoration: none; padding: 16px; text-align: center; font-weight: 600; font-size: 15px;">Обрати букет</a>
+</section>
+<section style="padding: 0 16px 20px; display: flex; flex-wrap: wrap; gap: 8px;">
+<button type="button" style="border: 1px solid #7a1b2b; background: #7a1b2b; color: #fff; padding: 10px 16px; font: inherit; font-size: 13px; border-radius: 999px;">Усі</button>
+<button type="button" style="border: 1px solid #d9c9b5; background: transparent; padding: 10px 16px; font: inherit; font-size: 13px; border-radius: 999px;">День народження</button>
+<button type="button" style="border: 1px solid #d9c9b5; background: transparent; padding: 10px 16px; font: inherit; font-size: 13px; border-radius: 999px;">Кохання</button>
+<button type="button" style="border: 1px solid #d9c9b5; background: transparent; padding: 10px 16px; font: inherit; font-size: 13px; border-radius: 999px;">Подяка</button>
+</section>
+<section style="padding: 0 16px 24px; display: flex; flex-direction: column; gap: 16px;">
+<h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 32px;">Хіти тижня</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;">
+
+<article style="display: flex; flex-direction: column; gap: 8px; height: 100%; box-sizing: border-box; padding: 8px 8px 10px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06);">
+<div style="position: relative; overflow: hidden; height: 184px; background: #ecdcc8; display: flex; align-items: center; justify-content: center;"><img src="img/DSC05407.jpg" alt="Закоханість" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"></div>
+<h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; line-height: 1.12; min-height: 2.24em;">Закоханість</h3>
+<div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+<span style="font-size: 15px; font-weight: 700;">4 528 ₴</span>
+<button type="button" aria-label="Додати Закоханість в кошик" style="width: 44px; height: 44px; border: 1px solid #2b1f22; background: transparent; font-size: 22px; line-height: 1;">+</button>
+</div>
+</article>
+
+<article style="display: flex; flex-direction: column; gap: 8px; height: 100%; box-sizing: border-box; padding: 8px 8px 10px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06);">
+<div style="position: relative; overflow: hidden; height: 184px; background: #efe2d6; display: flex; align-items: center; justify-content: center;"><img src="img/DSC07365.jpg" alt="Кохання в кожній троянді" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"></div>
+<h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; line-height: 1.12; min-height: 2.24em;">Кохання в кожній троянді</h3>
+<div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+<span style="font-size: 15px; font-weight: 700;">2 449 ₴</span>
+<button type="button" aria-label="Додати Кохання в кожній троянді в кошик" style="width: 44px; height: 44px; border: 1px solid #2b1f22; background: transparent; font-size: 22px; line-height: 1;">+</button>
+</div>
+</article>
+
+<article style="display: flex; flex-direction: column; gap: 8px; height: 100%; box-sizing: border-box; padding: 8px 8px 10px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06);">
+<div style="position: relative; overflow: hidden; height: 184px; background: #f1e4cc; display: flex; align-items: center; justify-content: center;"><img src="img/DSC08769.jpg" alt="Відтінки щастя" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"></div>
+<h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; line-height: 1.12; min-height: 2.24em;">Відтінки щастя</h3>
+<div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+<span style="font-size: 15px; font-weight: 700;">3 875 ₴</span>
+<button type="button" aria-label="Додати Відтінки щастя в кошик" style="width: 44px; height: 44px; border: 1px solid #2b1f22; background: transparent; font-size: 22px; line-height: 1;">+</button>
+</div>
+</article>
+
+<article style="display: flex; flex-direction: column; gap: 8px; height: 100%; box-sizing: border-box; padding: 8px 8px 10px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06);">
+<div style="position: relative; overflow: hidden; height: 184px; background: #e9e1e4; display: flex; align-items: center; justify-content: center;"><img src="img/DSC06107.jpg" alt="Валентинка" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"></div>
+<h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; line-height: 1.12; min-height: 2.24em;">Валентинка</h3>
+<div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center;">
+<span style="font-size: 15px; font-weight: 700;">6 637 ₴</span>
+<button type="button" aria-label="Додати Валентинка в кошик" style="width: 44px; height: 44px; border: 1px solid #2b1f22; background: transparent; font-size: 22px; line-height: 1;">+</button>
+</div>
+</article>
+
+</div>
+</section>
+<section style="margin: 0 16px; padding: 24px 20px; background: #fffaf3; display: flex; flex-direction: column; gap: 18px;">
+
+<div style="display: flex; gap: 14px;"><span style="flex: none; width: 34px; font-family: 'Cormorant Garamond', serif; font-size: 28px; color: #7a1b2b; line-height: 1;">01</span><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-weight: 700; font-size: 15px;">Фото перед відправкою</span><span style="font-size: 13px; color: #5a4a46; line-height: 1.5;">Затвердите букет до доставки.</span></div></div>
+
+<div style="display: flex; gap: 14px;"><span style="flex: none; width: 34px; font-family: 'Cormorant Garamond', serif; font-size: 28px; color: #7a1b2b; line-height: 1;">02</span><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-weight: 700; font-size: 15px;">Доставка в день замовлення</span><span style="font-size: 13px; color: #5a4a46; line-height: 1.5;">Дата й часовий інтервал — на ваш вибір.</span></div></div>
+
+<div style="display: flex; gap: 14px;"><span style="flex: none; width: 34px; font-family: 'Cormorant Garamond', serif; font-size: 28px; color: #7a1b2b; line-height: 1;">03</span><div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-weight: 700; font-size: 15px;">Листівка безкоштовно</span><span style="font-size: 13px; color: #5a4a46; line-height: 1.5;">Вашими словами, можна анонімно.</span></div></div>
+
+</section>
+<section style="padding: 28px 16px 24px; display: flex; flex-direction: column; gap: 22px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px 16px; flex-wrap: wrap;"><h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 28px; color: #2b1f22;">Подарунки до букета</h2><span style="font-size: 14px; color: #5a4a46;">Додайте в один клік — привеземо разом</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+<div style="position: relative; overflow: hidden; border-radius: 0; min-height: 150px; background: #fffaf3;"><img src="img/cat-presents.jpg" alt="Подарунки EL FLORA" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></div>
+<a href="#" tabindex="-1" style="text-decoration: none; color: #2b1f22; background: #ffffff; border-radius: 0; padding: 16px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06); display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #f3e3e5; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="M4 7l8 6 8-6"></path></svg></span><span style="font-weight: 700; font-size: 14px;">Листівка</span><span style="font-size: 13px; color: #5a4a46;">безкоштовно</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #2b1f22; background: #ffffff; border-radius: 0; padding: 16px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06); display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #f3e3e5; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 3h6"></path><path d="M10 3c0 3-3 4-3 9a5 5 0 0 0 10 0c0-5-3-6-3-9"></path></svg></span><span style="font-weight: 700; font-size: 14px;">Ваза</span><span style="font-size: 13px; color: #5a4a46;">від 390 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #2b1f22; background: #ffffff; border-radius: 0; padding: 16px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06); display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #f3e3e5; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 10h12l-1.5 9h-9z"></path><path d="M8 10a4 4 0 0 1 8 0"></path></svg></span><span style="font-weight: 700; font-size: 14px;">Солодощі</span><span style="font-size: 13px; color: #5a4a46;">від 250 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #2b1f22; background: #ffffff; border-radius: 0; padding: 16px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06); display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #f3e3e5; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="6"></circle><circle cx="7" cy="6.5" r="2.5"></circle><circle cx="17" cy="6.5" r="2.5"></circle></svg></span><span style="font-weight: 700; font-size: 14px;">Мʼяка іграшка</span><span style="font-size: 13px; color: #5a4a46;">від 450 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #2b1f22; background: #ffffff; border-radius: 0; padding: 16px; background: #ffffff; box-shadow: 0 1px 2px rgba(43,31,34,0.06), 0 8px 24px rgba(43,31,34,0.06); display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #f3e3e5; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><ellipse cx="9" cy="8" rx="4" ry="5"></ellipse><ellipse cx="16" cy="9" rx="3.5" ry="4.5"></ellipse><path d="M9 13l1 8M16 13.5l-2 7.5"></path></svg></span><span style="font-weight: 700; font-size: 14px;">Повітряні кульки</span><span style="font-size: 13px; color: #5a4a46;">від 90 ₴</span></a>
+</div>
+</section>
+
+<div style="position: sticky; bottom: 16px; margin: auto 12px 16px; z-index: 5; background: #2b1f22; color: #fff; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 30px rgba(43,31,34,0.3);">
+<span style="font-size: 14px;">Кошик · 2 товари</span>
+<a href="#" tabindex="-1" style="color: #fff; font-weight: 700; text-decoration: none; font-size: 15px;">3 300 ₴ · Оформити →</a>
+</div>
+</div></template>
+<template id="desk-b"><div style="width: 1440px; box-sizing: border-box; background: #14281e; color: #efe6d6; font-family: 'DM Sans', sans-serif; display: flex; flex-direction: column;">
+
+<header style="margin: 20px 40px 0; padding: 14px 20px 14px 28px; border-radius: 999px; background: rgba(239,230,214,0.08); border: 1px solid rgba(239,230,214,0.14); display: flex; align-items: center; gap: 40px;">
+<a href="#" tabindex="-1" aria-label="Elflora — на головну" style="display: flex; align-items: center; background: #efe6d6; border-radius: 999px; padding: 2px 14px;"><img src="img/logo.png" alt="Elflora — квіти, Кропивницький" style="height: 44px; width: auto; display: block;"></a>
+<nav style="display: flex; gap: 28px; font-size: 15px; flex-grow: 1;">
+<a href="#" tabindex="-1" style="text-decoration: none;">Каталог</a>
+<a href="#" tabindex="-1" style="text-decoration: none;">Монобукети</a>
+<a href="#" tabindex="-1" style="text-decoration: none;">Квіти в коробці</a>
+<a href="#" tabindex="-1" style="text-decoration: none;">Підписка на квіти</a>
+<a href="#" tabindex="-1" style="text-decoration: none;">Про нас</a>
+</nav>
+<span style="font-size: 15px; font-weight: 700;"><a href="tel:+380993666044" style="color: inherit; text-decoration: none; white-space: nowrap;">+38 (099) 366-60-44</a></span>
+<button type="button" aria-label="Пошук" style="width: 44px; height: 44px; border-radius: 22px; border: 0; background: rgba(239,230,214,0.1);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#efe6d6" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></button>
+<button type="button" style="height: 44px; padding: 0 20px; border-radius: 22px; border: 0; background: #d9a066; color: #14281e; font: inherit; font-weight: 700; font-size: 14px;">Кошик · 2</button>
+</header>
+
+<section style="padding: 40px 40px 32px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 20px;">
+<div style="grid-column: span 7; height: 600px; border-radius: 36px; background: #1f3b2d; position: relative; overflow: hidden; padding: 56px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;">
+<img src="img/kompozitsiya-kvitkova-feeriya-2.jpg" alt="Композиція «Квіткова феєрія»" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"><div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,40,30,0.92) 0%, rgba(20,40,30,0.55) 45%, rgba(20,40,30,0.05) 100%);"></div>
+<span style="position: relative; align-self: flex-start; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(20,40,30,0.72); color: #efe6d6; padding: 8px 14px; border-radius: 999px;">Сезонна колекція</span>
+<div style="position: relative; display: flex; flex-direction: column; gap: 22px; max-width: 520px;">
+<h1 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: 76px; line-height: 1; letter-spacing: -0.02em;">Жива краса <i style="color: #d9a066;">з нашої</i> оранжереї</h1>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c0ae;">Сезонні квіти, природні форми, екоупаковка. Кожен букет збирає флорист вручну.</p>
+</div>
+</div>
+<div style="grid-column: span 5; display: flex; flex-direction: column; gap: 20px;">
+<form style="border-radius: 36px; background: #efe6d6; color: #14281e; padding: 36px; display: flex; flex-direction: column; gap: 16px;">
+<h2 style="margin: 0; font-family: Fraunces, serif; font-weight: 600; font-size: 30px;">Куди й коли доставити?</h2>
+<p style="margin: 0; font-size: 14px; color: #4a5a4f;">Покажемо лише букети, які встигнемо зібрати до вашого часу.</p>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 700;">Адреса<input type="text" placeholder="Вулиця, будинок" style="border: 1px solid #c9bda7; border-radius: 16px; padding: 14px 16px; font: inherit; font-size: 15px; font-weight: 400; background: #fffaf0;"></label>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 700;">Дата<input type="text" value="Сьогодні" style="border: 1px solid #c9bda7; border-radius: 16px; padding: 14px 16px; font: inherit; font-size: 15px; font-weight: 400; background: #fffaf0;"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 700;">Час<input type="text" value="16:00–18:00" style="border: 1px solid #c9bda7; border-radius: 16px; padding: 14px 16px; font: inherit; font-size: 15px; font-weight: 400; background: #fffaf0;"></label>
+</div>
+<button type="button" style="margin-top: 6px; border: 0; border-radius: 999px; background: #14281e; color: #efe6d6; padding: 18px; font: inherit; font-size: 15px; font-weight: 700;">Показати доступні букети</button>
+</form>
+<div style="flex-grow: 1; border-radius: 36px; background: #c97c63; color: #14281e; padding: 32px; display: flex; justify-content: space-between; align-items: flex-end;">
+<div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-family: Fraunces, serif; font-size: 30px; font-weight: 600;">Підписка на квіти</span><span style="font-size: 15px;">Свіжий букет щотижня — додому чи в офіс</span></div>
+<a href="#" tabindex="-1" aria-label="Детальніше про підписку" style="width: 56px; height: 56px; border-radius: 28px; background: #14281e; color: #efe6d6; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 22px;">→</a>
+</div>
+</div>
+</section>
+
+<section style="padding: 8px 40px 40px; display: flex; justify-content: space-between; gap: 16px;">
+
+<a href="#" tabindex="-1" style="width: 120px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; font-size: 14px; text-align: center;">
+<span style="width: 104px; height: 104px; border-radius: 52px; padding: 4px; box-sizing: border-box; border: 2px solid #d9a066; display: flex;"><img src="img/buket-garmoniya.jpg" alt="" style="flex-grow: 1; width: 100%; height: 100%; border-radius: 42px; object-fit: cover;"></span>
+День народження
+</a>
+
+<a href="#" tabindex="-1" style="width: 120px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; font-size: 14px; text-align: center;">
+<span style="width: 104px; height: 104px; border-radius: 52px; padding: 4px; box-sizing: border-box; border: 2px solid #d9a066; display: flex;"><img src="img/DSC07365.jpg" alt="" style="flex-grow: 1; width: 100%; height: 100%; border-radius: 42px; object-fit: cover;"></span>
+Кохання
+</a>
+
+<a href="#" tabindex="-1" style="width: 120px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; font-size: 14px; text-align: center;">
+<span style="width: 104px; height: 104px; border-radius: 52px; padding: 4px; box-sizing: border-box; border: 2px solid #d9a066; display: flex;"><img src="img/kompozitsiya-kvitkovij-desert.jpg" alt="" style="flex-grow: 1; width: 100%; height: 100%; border-radius: 42px; object-fit: cover;"></span>
+Подяка
+</a>
+
+<a href="#" tabindex="-1" style="width: 120px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; font-size: 14px; text-align: center;">
+<span style="width: 104px; height: 104px; border-radius: 52px; padding: 4px; box-sizing: border-box; border: 2px solid #d9a066; display: flex;"><img src="img/buket-nebesna-nizhnist.jpg" alt="" style="flex-grow: 1; width: 100%; height: 100%; border-radius: 42px; object-fit: cover;"></span>
+Для мами
+</a>
+
+<a href="#" tabindex="-1" style="width: 120px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; font-size: 14px; text-align: center;">
+<span style="width: 104px; height: 104px; border-radius: 52px; padding: 4px; box-sizing: border-box; border: 2px solid #d9a066; display: flex;"><img src="img/buket-shepit-angeliv.jpg" alt="" style="flex-grow: 1; width: 100%; height: 100%; border-radius: 42px; object-fit: cover;"></span>
+Вибачення
+</a>
+
+<a href="#" tabindex="-1" style="width: 120px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; font-size: 14px; text-align: center;">
+<span style="width: 104px; height: 104px; border-radius: 52px; padding: 4px; box-sizing: border-box; border: 2px solid #d9a066; display: flex;"><img src="img/buket-kvitkovij-zefir.jpg" alt="" style="flex-grow: 1; width: 100%; height: 100%; border-radius: 42px; object-fit: cover;"></span>
+Новонароджений
+</a>
+
+<a href="#" tabindex="-1" style="width: 120px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-decoration: none; font-size: 14px; text-align: center;">
+<span style="width: 104px; height: 104px; border-radius: 52px; padding: 4px; box-sizing: border-box; border: 2px solid #d9a066; display: flex;"><img src="img/cat-presents.jpg" alt="" style="flex-grow: 1; width: 100%; height: 100%; border-radius: 42px; object-fit: cover;"></span>
+Подарунки
+</a>
+
+</section>
+
+<section style="padding: 0 40px 48px; display: flex; flex-direction: column; gap: 24px;">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<h2 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: 52px; letter-spacing: -0.01em;">Зібрано сьогодні</h2>
+<div style="display: flex; gap: 10px;">
+<button type="button" style="border: 1px solid rgba(239,230,214,0.3); background: transparent; color: #efe6d6; border-radius: 999px; padding: 10px 18px; font: inherit; font-size: 14px;">Ціна ↓</button>
+<button type="button" style="border: 1px solid rgba(239,230,214,0.3); background: transparent; color: #efe6d6; border-radius: 999px; padding: 10px 18px; font: inherit; font-size: 14px;">Колір</button>
+<button type="button" style="border: 1px solid rgba(239,230,214,0.3); background: transparent; color: #efe6d6; border-radius: 999px; padding: 10px 18px; font: inherit; font-size: 14px;">Розмір</button>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;">
+
+<article style="border-radius: 28px; background: #1f3b2d; padding: 14px; display: flex; flex-direction: column; gap: 14px; height: 100%; box-sizing: border-box;">
+<div style="position: relative; height: 300px; border-radius: 20px; background: #e9dcc4; display: flex; align-items: center; justify-content: center;">
+<img src="img/DSC05407.jpg" alt="Закоханість" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+<button type="button" aria-label="Додати в обране" style="position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border-radius: 22px; border: 0; background: rgba(20,40,30,0.55);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#efe6d6" stroke-width="2" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"></path></svg></button>
+<span style="position: absolute; left: 12px; bottom: 12px; background: #efe6d6; color: #14281e; font-size: 12px; font-weight: 700; padding: 6px 10px; border-radius: 999px;">Доставка за 2 год</span>
+</div>
+<div style="padding: 0 8px; display: flex; flex-direction: column; gap: 4px;">
+<h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 600; font-size: 22px; line-height: 1.15; min-height: 2.3em;">Закоханість</h3>
+<span style="font-size: 14px; color: #a9b8a6;">Троянди, гортензія</span>
+</div>
+<div style="margin-top: auto; padding: 0 8px 6px; display: flex; justify-content: space-between; align-items: center;">
+<span style="font-size: 19px; font-weight: 700;">4 528 ₴</span>
+<button type="button" style="border: 0; border-radius: 999px; background: #d9a066; color: #14281e; padding: 12px 20px; font: inherit; font-weight: 700; font-size: 14px;">У кошик</button>
+</div>
+</article>
+
+<article style="border-radius: 28px; background: #1f3b2d; padding: 14px; display: flex; flex-direction: column; gap: 14px; height: 100%; box-sizing: border-box;">
+<div style="position: relative; height: 300px; border-radius: 20px; background: #ead3c6; display: flex; align-items: center; justify-content: center;">
+<img src="img/DSC07365.jpg" alt="Кохання в кожній троянді" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+<button type="button" aria-label="Додати в обране" style="position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border-radius: 22px; border: 0; background: rgba(20,40,30,0.55);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#efe6d6" stroke-width="2" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"></path></svg></button>
+<span style="position: absolute; left: 12px; bottom: 12px; background: #efe6d6; color: #14281e; font-size: 12px; font-weight: 700; padding: 6px 10px; border-radius: 999px;">Сьогодні</span>
+</div>
+<div style="padding: 0 8px; display: flex; flex-direction: column; gap: 4px;">
+<h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 600; font-size: 22px; line-height: 1.15; min-height: 2.3em;">Кохання в кожній троянді</h3>
+<span style="font-size: 14px; color: #a9b8a6;">Червоні троянди</span>
+</div>
+<div style="margin-top: auto; padding: 0 8px 6px; display: flex; justify-content: space-between; align-items: center;">
+<span style="font-size: 19px; font-weight: 700;">2 449 ₴</span>
+<button type="button" style="border: 0; border-radius: 999px; background: #d9a066; color: #14281e; padding: 12px 20px; font: inherit; font-weight: 700; font-size: 14px;">У кошик</button>
+</div>
+</article>
+
+<article style="border-radius: 28px; background: #1f3b2d; padding: 14px; display: flex; flex-direction: column; gap: 14px; height: 100%; box-sizing: border-box;">
+<div style="position: relative; height: 300px; border-radius: 20px; background: #d9e2d0; display: flex; align-items: center; justify-content: center;">
+<img src="img/DSC08769.jpg" alt="Відтінки щастя" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+<button type="button" aria-label="Додати в обране" style="position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border-radius: 22px; border: 0; background: rgba(20,40,30,0.55);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#efe6d6" stroke-width="2" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"></path></svg></button>
+<span style="position: absolute; left: 12px; bottom: 12px; background: #efe6d6; color: #14281e; font-size: 12px; font-weight: 700; padding: 6px 10px; border-radius: 999px;">Сьогодні</span>
+</div>
+<div style="padding: 0 8px; display: flex; flex-direction: column; gap: 4px;">
+<h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 600; font-size: 22px; line-height: 1.15; min-height: 2.3em;">Відтінки щастя</h3>
+<span style="font-size: 14px; color: #a9b8a6;">Мікс сезонних квітів</span>
+</div>
+<div style="margin-top: auto; padding: 0 8px 6px; display: flex; justify-content: space-between; align-items: center;">
+<span style="font-size: 19px; font-weight: 700;">3 875 ₴</span>
+<button type="button" style="border: 0; border-radius: 999px; background: #d9a066; color: #14281e; padding: 12px 20px; font: inherit; font-weight: 700; font-size: 14px;">У кошик</button>
+</div>
+</article>
+
+<article style="border-radius: 28px; background: #1f3b2d; padding: 14px; display: flex; flex-direction: column; gap: 14px; height: 100%; box-sizing: border-box;">
+<div style="position: relative; height: 300px; border-radius: 20px; background: #f1dccd; display: flex; align-items: center; justify-content: center;">
+<img src="img/DSC06107.jpg" alt="Валентинка" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+<button type="button" aria-label="Додати в обране" style="position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border-radius: 22px; border: 0; background: rgba(20,40,30,0.55);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#efe6d6" stroke-width="2" aria-hidden="true"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"></path></svg></button>
+<span style="position: absolute; left: 12px; bottom: 12px; background: #efe6d6; color: #14281e; font-size: 12px; font-weight: 700; padding: 6px 10px; border-radius: 999px;">Завтра зранку</span>
+</div>
+<div style="padding: 0 8px; display: flex; flex-direction: column; gap: 4px;">
+<h3 style="margin: 0; font-family: Fraunces, serif; font-weight: 600; font-size: 22px; line-height: 1.15; min-height: 2.3em;">Валентинка</h3>
+<span style="font-size: 14px; color: #a9b8a6;">Троянди в коробці</span>
+</div>
+<div style="margin-top: auto; padding: 0 8px 6px; display: flex; justify-content: space-between; align-items: center;">
+<span style="font-size: 19px; font-weight: 700;">6 637 ₴</span>
+<button type="button" style="border: 0; border-radius: 999px; background: #d9a066; color: #14281e; padding: 12px 20px; font: inherit; font-weight: 700; font-size: 14px;">У кошик</button>
+</div>
+</article>
+
+</div>
+</section>
+
+<section style="margin: 0 40px; border-radius: 36px; background: #efe6d6; color: #14281e; padding: 44px 48px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px;">
+
+<div style="display: flex; flex-direction: column; gap: 10px;"><span style="width: 48px; height: 48px; border-radius: 24px; background: #14281e; color: #d9a066; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 20px;">1</span><span style="font-weight: 700; font-size: 16px;">Фото перед відправкою</span><span style="font-size: 14px; line-height: 1.55; color: #4a5a4f;">Затвердите букет у месенджері до доставки.</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 10px;"><span style="width: 48px; height: 48px; border-radius: 24px; background: #14281e; color: #d9a066; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 20px;">2</span><span style="font-weight: 700; font-size: 16px;">Точний час доставки</span><span style="font-size: 14px; line-height: 1.55; color: #4a5a4f;">Двогодинні інтервали, курʼєр попередить дзвінком.</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 10px;"><span style="width: 48px; height: 48px; border-radius: 24px; background: #14281e; color: #d9a066; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 20px;">3</span><span style="font-weight: 700; font-size: 16px;">Екоупаковка</span><span style="font-size: 14px; line-height: 1.55; color: #4a5a4f;">Крафт, тканина й вода в колбі — букет довше свіжий.</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 10px;"><span style="width: 48px; height: 48px; border-radius: 24px; background: #14281e; color: #d9a066; display: flex; align-items: center; justify-content: center; font-family: Fraunces, serif; font-size: 20px;">4</span><span style="font-weight: 700; font-size: 16px;">Бонуси за покупки</span><span style="font-size: 14px; line-height: 1.55; color: #4a5a4f;">Накопичуйте бонуси й оплачуйте ними наступні замовлення.</span></div>
+
+</section>
+
+<section style="padding: 48px 40px 40px; display: flex; flex-direction: column; gap: 22px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px 16px; flex-wrap: wrap;"><h2 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: 48px; color: #efe6d6;">Подарунки до букета</h2><span style="font-size: 14px; color: #c9c0ae;">Додайте в один клік — привеземо разом</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px;">
+<div style="position: relative; overflow: hidden; border-radius: 28px; min-height: 190px; background: #efe6d6;"><img src="img/cat-presents.jpg" alt="Подарунки EL FLORA" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></div>
+<a href="#" tabindex="-1" style="text-decoration: none; color: #14281e; background: #efe6d6; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #14281e; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d9a066" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="M4 7l8 6 8-6"></path></svg></span><span style="font-weight: 700; font-size: 16px;">Листівка</span><span style="font-size: 13px; color: #4a5a4f;">безкоштовно</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #14281e; background: #efe6d6; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #14281e; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d9a066" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 3h6"></path><path d="M10 3c0 3-3 4-3 9a5 5 0 0 0 10 0c0-5-3-6-3-9"></path></svg></span><span style="font-weight: 700; font-size: 16px;">Ваза</span><span style="font-size: 13px; color: #4a5a4f;">від 390 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #14281e; background: #efe6d6; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #14281e; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d9a066" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 10h12l-1.5 9h-9z"></path><path d="M8 10a4 4 0 0 1 8 0"></path></svg></span><span style="font-weight: 700; font-size: 16px;">Солодощі</span><span style="font-size: 13px; color: #4a5a4f;">від 250 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #14281e; background: #efe6d6; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #14281e; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d9a066" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="6"></circle><circle cx="7" cy="6.5" r="2.5"></circle><circle cx="17" cy="6.5" r="2.5"></circle></svg></span><span style="font-weight: 700; font-size: 16px;">Мʼяка іграшка</span><span style="font-size: 13px; color: #4a5a4f;">від 450 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #14281e; background: #efe6d6; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #14281e; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d9a066" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><ellipse cx="9" cy="8" rx="4" ry="5"></ellipse><ellipse cx="16" cy="9" rx="3.5" ry="4.5"></ellipse><path d="M9 13l1 8M16 13.5l-2 7.5"></path></svg></span><span style="font-weight: 700; font-size: 16px;">Повітряні кульки</span><span style="font-size: 13px; color: #4a5a4f;">від 90 ₴</span></a>
+</div>
+</section>
+<footer style="margin-top: auto; padding: 36px 40px; display: flex; justify-content: space-between; font-size: 14px; color: #a9b8a6; border-top: 1px solid rgba(239,230,214,0.12);">
+<a href="#" tabindex="-1" aria-label="Elflora — на головну" style="display: flex; align-items: center; background: #efe6d6; border-radius: 999px; padding: 2px 14px;"><img src="img/logo.png" alt="Elflora — квіти, Кропивницький" style="height: 40px; width: auto; display: block;"></a>
+<span style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: flex-end;"><span>м. Кропивницький</span><a href="tel:+380993666044" style="color: inherit; text-decoration: none; white-space: nowrap;">+38 (099) 366-60-44</a><a href="mailto:info@elflora.com.ua" style="color: inherit; text-decoration: none;">info@elflora.com.ua</a><span>Доставка · Оплата · Публічна оферта</span></span>
+</footer>
+</div></template>
+<template id="mob-b"><div style="width: 390px; box-sizing: border-box; background: #14281e; color: #efe6d6; font-family: 'DM Sans', sans-serif; display: flex; flex-direction: column; position: relative; box-shadow: 0 0 0 1px rgba(0,0,0,0.06);">
+<header style="padding: 14px 16px; display: flex; align-items: center; gap: 8px;">
+<a href="#" tabindex="-1" aria-label="Elflora — на головну" style="display: flex; align-items: center; margin-right: auto; background: #efe6d6; border-radius: 999px; padding: 2px 14px;"><img src="img/logo.png" alt="Elflora — квіти, Кропивницький" style="height: 36px; width: auto; display: block;"></a>
+<a href="tel:+380993666044" aria-label="Подзвонити: +38 (099) 366-60-44" style="width: 44px; height: 44px; border-radius: 22px; background: rgba(239,230,214,0.1); display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#efe6d6" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></a>
+<button type="button" aria-label="Пошук" style="width: 44px; height: 44px; border-radius: 22px; border: 0; background: rgba(239,230,214,0.1);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#efe6d6" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></button>
+<button type="button" aria-label="Меню" style="width: 44px; height: 44px; border-radius: 22px; border: 0; background: rgba(239,230,214,0.1);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#efe6d6" stroke-width="2" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
+</header>
+<section style="margin: 4px 12px 0; border-radius: 28px; background: #1f3b2d; padding: 24px; position: relative; overflow: hidden; height: 360px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; gap: 12px;">
+<img src="img/kompozitsiya-kvitkova-feeriya-2.jpg" alt="Композиція «Квіткова феєрія»" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"><div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,40,30,0.92) 0%, rgba(20,40,30,0.55) 45%, rgba(20,40,30,0.05) 100%);"></div>
+<h1 style="position: relative; margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: 40px; line-height: 1.02;">Жива краса <i style="color: #d9a066;">з нашої</i> оранжереї</h1>
+<p style="position: relative; margin: 0; font-size: 14px; color: #c9c0ae;">Кожен букет збирає флорист вручну.</p>
+</section>
+<form style="margin: 12px 12px 0; border-radius: 28px; background: #efe6d6; color: #14281e; padding: 20px; display: flex; flex-direction: column; gap: 12px;">
+<span style="font-family: Fraunces, serif; font-size: 22px; font-weight: 600;">Куди й коли доставити?</span>
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 700;">Адреса<input type="text" placeholder="Вулиця, будинок" style="border: 1px solid #c9bda7; border-radius: 14px; padding: 12px 14px; font: inherit; font-size: 15px; font-weight: 400; background: #fffaf0;"></label>
+<div style="display: flex; gap: 8px;">
+<button type="button" style="flex: 1; border: 0; border-radius: 14px; background: #14281e; color: #efe6d6; padding: 12px; font: inherit; font-size: 13px; font-weight: 700;">Сьогодні</button>
+<button type="button" style="flex: 1; border: 1px solid #c9bda7; border-radius: 14px; background: transparent; padding: 12px; font: inherit; font-size: 13px;">Завтра</button>
+<button type="button" style="flex: 1; border: 1px solid #c9bda7; border-radius: 14px; background: transparent; padding: 12px; font: inherit; font-size: 13px;">Інша дата</button>
+</div>
+</form>
+<section style="padding: 20px 12px; display: flex; justify-content: space-between; gap: 4px;">
+
+<a href="#" tabindex="-1" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; font-size: 12px; width: 66px; text-align: center; white-space: nowrap;">
+<span style="width: 62px; height: 62px; border-radius: 31px; padding: 3px; box-sizing: border-box; border: 2px solid #d9a066; display: flex;"><img src="img/DSC07365.jpg" alt="" style="flex-grow: 1; width: 100%; height: 100%; border-radius: 28px; object-fit: cover;"></span>Кохання
+</a>
+
+<a href="#" tabindex="-1" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; font-size: 12px; width: 66px; text-align: center; white-space: nowrap;">
+<span style="width: 62px; height: 62px; border-radius: 31px; padding: 3px; box-sizing: border-box; border: 2px solid #d9a066; display: flex;"><img src="img/kompozitsiya-kvitkovij-desert.jpg" alt="" style="flex-grow: 1; width: 100%; height: 100%; border-radius: 28px; object-fit: cover;"></span>Подяка
+</a>
+
+<a href="#" tabindex="-1" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; font-size: 12px; width: 66px; text-align: center; white-space: nowrap;">
+<span style="width: 62px; height: 62px; border-radius: 31px; padding: 3px; box-sizing: border-box; border: 2px solid #d9a066; display: flex;"><img src="img/buket-nebesna-nizhnist.jpg" alt="" style="flex-grow: 1; width: 100%; height: 100%; border-radius: 28px; object-fit: cover;"></span>Для мами
+</a>
+
+<a href="#" tabindex="-1" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; font-size: 12px; width: 66px; text-align: center; white-space: nowrap;">
+<span style="width: 62px; height: 62px; border-radius: 31px; padding: 3px; box-sizing: border-box; border: 2px solid #d9a066; display: flex;"><img src="img/buket-shepit-angeliv.jpg" alt="" style="flex-grow: 1; width: 100%; height: 100%; border-radius: 28px; object-fit: cover;"></span>Вибачення
+</a>
+
+<a href="#" tabindex="-1" style="display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; font-size: 12px; width: 66px; text-align: center; white-space: nowrap;">
+<span style="width: 62px; height: 62px; border-radius: 31px; padding: 3px; box-sizing: border-box; border: 2px solid #d9a066; display: flex;"><img src="img/cat-presents.jpg" alt="" style="flex-grow: 1; width: 100%; height: 100%; border-radius: 28px; object-fit: cover;"></span>Подарунки
+</a>
+
+</section>
+<section style="padding: 0 12px 24px; display: flex; flex-direction: column; gap: 14px;">
+<h2 style="margin: 0 4px; font-family: Fraunces, serif; font-weight: 400; font-size: 30px;">Зібрано сьогодні</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+
+<article style="border-radius: 22px; background: #1f3b2d; padding: 8px; display: flex; flex-direction: column; gap: 8px; height: 100%; box-sizing: border-box;">
+<div style="position: relative; height: 180px; border-radius: 16px; background: #e9dcc4; display: flex; align-items: center; justify-content: center;"><img src="img/DSC05407.jpg" alt="Закоханість" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"><span style="position: absolute; left: 8px; bottom: 8px; background: #efe6d6; color: #14281e; font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 999px;">За 2 год</span></div>
+<span style="padding: 0 6px; font-family: Fraunces, serif; font-weight: 600; font-size: 17px; line-height: 1.15; min-height: 2.3em;">Закоханість</span>
+<div style="margin-top: auto; padding: 0 6px 4px; display: flex; justify-content: space-between; align-items: center;"><span style="font-weight: 700; font-size: 15px;">4 528 ₴</span><button type="button" aria-label="Додати Закоханість у кошик" style="width: 44px; height: 44px; border-radius: 22px; border: 0; background: #d9a066; color: #14281e; font-size: 20px; font-weight: 700;">+</button></div>
+</article>
+
+<article style="border-radius: 22px; background: #1f3b2d; padding: 8px; display: flex; flex-direction: column; gap: 8px; height: 100%; box-sizing: border-box;">
+<div style="position: relative; height: 180px; border-radius: 16px; background: #ead3c6; display: flex; align-items: center; justify-content: center;"><img src="img/DSC07365.jpg" alt="Кохання в кожній троянді" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"><span style="position: absolute; left: 8px; bottom: 8px; background: #efe6d6; color: #14281e; font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 999px;">Сьогодні</span></div>
+<span style="padding: 0 6px; font-family: Fraunces, serif; font-weight: 600; font-size: 17px; line-height: 1.15; min-height: 2.3em;">Кохання в кожній троянді</span>
+<div style="margin-top: auto; padding: 0 6px 4px; display: flex; justify-content: space-between; align-items: center;"><span style="font-weight: 700; font-size: 15px;">2 449 ₴</span><button type="button" aria-label="Додати Кохання в кожній троянді у кошик" style="width: 44px; height: 44px; border-radius: 22px; border: 0; background: #d9a066; color: #14281e; font-size: 20px; font-weight: 700;">+</button></div>
+</article>
+
+<article style="border-radius: 22px; background: #1f3b2d; padding: 8px; display: flex; flex-direction: column; gap: 8px; height: 100%; box-sizing: border-box;">
+<div style="position: relative; height: 180px; border-radius: 16px; background: #d9e2d0; display: flex; align-items: center; justify-content: center;"><img src="img/DSC08769.jpg" alt="Відтінки щастя" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"><span style="position: absolute; left: 8px; bottom: 8px; background: #efe6d6; color: #14281e; font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 999px;">Сьогодні</span></div>
+<span style="padding: 0 6px; font-family: Fraunces, serif; font-weight: 600; font-size: 17px; line-height: 1.15; min-height: 2.3em;">Відтінки щастя</span>
+<div style="margin-top: auto; padding: 0 6px 4px; display: flex; justify-content: space-between; align-items: center;"><span style="font-weight: 700; font-size: 15px;">3 875 ₴</span><button type="button" aria-label="Додати Відтінки щастя у кошик" style="width: 44px; height: 44px; border-radius: 22px; border: 0; background: #d9a066; color: #14281e; font-size: 20px; font-weight: 700;">+</button></div>
+</article>
+
+<article style="border-radius: 22px; background: #1f3b2d; padding: 8px; display: flex; flex-direction: column; gap: 8px; height: 100%; box-sizing: border-box;">
+<div style="position: relative; height: 180px; border-radius: 16px; background: #f1dccd; display: flex; align-items: center; justify-content: center;"><img src="img/DSC06107.jpg" alt="Валентинка" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"><span style="position: absolute; left: 8px; bottom: 8px; background: #efe6d6; color: #14281e; font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 999px;">Завтра</span></div>
+<span style="padding: 0 6px; font-family: Fraunces, serif; font-weight: 600; font-size: 17px; line-height: 1.15; min-height: 2.3em;">Валентинка</span>
+<div style="margin-top: auto; padding: 0 6px 4px; display: flex; justify-content: space-between; align-items: center;"><span style="font-weight: 700; font-size: 15px;">6 637 ₴</span><button type="button" aria-label="Додати Валентинка у кошик" style="width: 44px; height: 44px; border-radius: 22px; border: 0; background: #d9a066; color: #14281e; font-size: 20px; font-weight: 700;">+</button></div>
+</article>
+
+</div>
+</section>
+<section style="padding: 4px 12px 24px; display: flex; flex-direction: column; gap: 22px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px 16px; flex-wrap: wrap;"><h2 style="margin: 0; font-family: Fraunces, serif; font-weight: 400; font-size: 28px; color: #efe6d6;">Подарунки до букета</h2><span style="font-size: 14px; color: #c9c0ae;">Додайте в один клік — привеземо разом</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+<div style="position: relative; overflow: hidden; border-radius: 22px; min-height: 150px; background: #efe6d6;"><img src="img/cat-presents.jpg" alt="Подарунки EL FLORA" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></div>
+<a href="#" tabindex="-1" style="text-decoration: none; color: #14281e; background: #efe6d6; border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #14281e; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d9a066" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="M4 7l8 6 8-6"></path></svg></span><span style="font-weight: 700; font-size: 14px;">Листівка</span><span style="font-size: 13px; color: #4a5a4f;">безкоштовно</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #14281e; background: #efe6d6; border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #14281e; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d9a066" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 3h6"></path><path d="M10 3c0 3-3 4-3 9a5 5 0 0 0 10 0c0-5-3-6-3-9"></path></svg></span><span style="font-weight: 700; font-size: 14px;">Ваза</span><span style="font-size: 13px; color: #4a5a4f;">від 390 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #14281e; background: #efe6d6; border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #14281e; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d9a066" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 10h12l-1.5 9h-9z"></path><path d="M8 10a4 4 0 0 1 8 0"></path></svg></span><span style="font-weight: 700; font-size: 14px;">Солодощі</span><span style="font-size: 13px; color: #4a5a4f;">від 250 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #14281e; background: #efe6d6; border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #14281e; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d9a066" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="6"></circle><circle cx="7" cy="6.5" r="2.5"></circle><circle cx="17" cy="6.5" r="2.5"></circle></svg></span><span style="font-weight: 700; font-size: 14px;">Мʼяка іграшка</span><span style="font-size: 13px; color: #4a5a4f;">від 450 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #14281e; background: #efe6d6; border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #14281e; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#d9a066" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><ellipse cx="9" cy="8" rx="4" ry="5"></ellipse><ellipse cx="16" cy="9" rx="3.5" ry="4.5"></ellipse><path d="M9 13l1 8M16 13.5l-2 7.5"></path></svg></span><span style="font-weight: 700; font-size: 14px;">Повітряні кульки</span><span style="font-size: 13px; color: #4a5a4f;">від 90 ₴</span></a>
+</div>
+</section>
+
+<nav aria-label="Основна навігація" style="position: sticky; bottom: 14px; margin: auto 12px 14px; z-index: 5; border-radius: 999px; background: rgba(239,230,214,0.96); color: #14281e; padding: 8px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.35);">
+<a href="#" tabindex="-1" style="color: #14281e; text-decoration: none; font-size: 13px; font-weight: 700; padding: 12px 16px;">Каталог</a>
+<a href="#" tabindex="-1" style="color: #14281e; text-decoration: none; font-size: 13px; padding: 12px 10px;">Обране</a>
+<a href="#" tabindex="-1" style="color: #14281e; text-decoration: none; font-size: 13px; padding: 12px 10px;">Кабінет</a>
+<a href="#" tabindex="-1" style="background: #14281e; color: #efe6d6; text-decoration: none; font-size: 13px; font-weight: 700; padding: 12px 18px; border-radius: 999px;">Кошик · 3 300 ₴</a>
+</nav>
+</div></template>
+<template id="desk-c"><div style="width: 1440px; box-sizing: border-box; background: #ffffff; color: #16110f; font-family: Manrope, sans-serif; display: flex; flex-direction: column;">
+
+<div style="background: #16110f; color: #fff; font-family: Unbounded, sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; padding: 12px 0; display: flex; gap: 48px; white-space: nowrap; overflow: hidden;">
+<span>✿ Доставка сьогодні</span><span style="color: #e9a9b9;">Фото букета перед відправкою</span><span>✿ Листівка безкоштовно</span><span style="color: #e9a9b9;">Бонуси за кожне замовлення</span><span>✿ Доставка сьогодні</span><span style="color: #e9a9b9;">Фото букета перед відправкою</span><span>✿ Листівка безкоштовно</span>
+</div>
+
+<header style="padding: 22px 48px; display: flex; align-items: center; gap: 40px;">
+<a href="#" tabindex="-1" aria-label="Elflora — на головну" style="display: flex; align-items: center;"><img src="img/logo.png" alt="Elflora — квіти, Кропивницький" style="height: 56px; width: auto; display: block;"></a>
+<nav style="display: flex; gap: 8px; flex-grow: 1;">
+<a href="#" tabindex="-1" style="text-decoration: none; background: #16110f; color: #fff; padding: 12px 20px; border-radius: 999px; font-weight: 700; font-size: 14px;">Букети</a>
+<a href="#" tabindex="-1" style="text-decoration: none; background: #f4f0ec; padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 14px;">Троянди</a>
+<a href="#" tabindex="-1" style="text-decoration: none; background: #f4f0ec; padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 14px;">Коробки</a>
+<a href="#" tabindex="-1" style="text-decoration: none; background: #f4f0ec; padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 14px;">Подарунки</a>
+<a href="#" tabindex="-1" style="text-decoration: none; background: #f4f0ec; padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 14px;">До 1 000 ₴</a>
+</nav>
+<span style="display: flex; flex-direction: column; font-size: 13px; font-weight: 700; line-height: 1.4;"><a href="tel:+380993666044" style="color: inherit; text-decoration: none; white-space: nowrap;">+38 (099) 366-60-44</a><span style="font-weight: 500; color: #5b524e;">Кропивницький</span></span>
+<label style="display: flex; align-items: center; gap: 8px; background: #f4f0ec; border-radius: 999px; padding: 12px 18px; width: 220px;">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16110f" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+<input type="search" placeholder="Піони, 51 троянда…" aria-label="Пошук" style="border: 0; background: transparent; font: inherit; font-size: 14px; outline: none; width: 100%;">
+</label>
+<button type="button" style="height: 48px; padding: 0 22px; border-radius: 999px; border: 0; background: #7a1b2b; color: #fff; font: inherit; font-weight: 800; font-size: 14px;">Кошик 2</button>
+</header>
+
+<section style="padding: 8px 48px 28px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px;">
+<div style="grid-column: span 8; height: 620px; border-radius: 40px; background: #ffd6e2; padding: 24px 24px 24px 56px; box-sizing: border-box; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px;">
+<div style="padding: 32px 0 32px; display: flex; flex-direction: column; justify-content: space-between;">
+<h1 style="margin: 0; font-family: Unbounded, sans-serif; font-weight: 800; font-size: 68px; line-height: 0.98; letter-spacing: -0.05em; color: #16110f;">ДАРУЙ<br>ЕМОЦІЇ,<br><span style="color: #7a1b2b;">НЕ КВІТИ</span></h1>
+<div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
+<span style="font-size: 16px; font-weight: 600; line-height: 1.5;">Авторські букети з доставкою по Кропивницькому — від 2 годин після оплати.</span>
+<a href="#" tabindex="-1" style="text-decoration: none; background: #16110f; color: #fff; padding: 20px 34px; border-radius: 999px; font-weight: 800; font-size: 16px;">Обрати букет →</a>
+</div>
+</div>
+<div style="position: relative;">
+<img src="img/buket-kvitkovij-zefir.jpg" alt="Букет «Квітковий зефір»" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 28px;">
+<span style="position: absolute; right: 20px; top: 20px; width: 128px; height: 128px; border-radius: 64px; background: #dfe6d3; display: flex; align-items: center; justify-content: center; text-align: center; font-family: Unbounded, sans-serif; font-weight: 700; font-size: 13px; line-height: 1.2; transform: rotate(10deg); box-shadow: 0 10px 24px rgba(22,17,15,0.12);">−15%<br>на перше<br>замовлення</span>
+</div>
+</div>
+<div style="grid-column: span 4; display: grid; grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 16px;">
+<a href="#" tabindex="-1" style="text-decoration: none; border-radius: 40px; background: #16110f; color: #fff; padding: 36px; display: flex; flex-direction: column; justify-content: space-between;">
+<span style="display: flex; justify-content: space-between; gap: 16px;"><span style="font-family: Unbounded, sans-serif; font-size: 30px; font-weight: 700; line-height: 1.05;">Зберіть<br>свій букет</span><img src="img/buket-garmoniya.jpg" alt="" style="width: 96px; height: 96px; border-radius: 48px; object-fit: cover;"></span>
+<span style="font-size: 15px; color: #d8cfc9;">Оберіть квіти, колір і упаковку — ціна рахується одразу →</span>
+</a>
+<a href="#" tabindex="-1" style="text-decoration: none; border-radius: 40px; background: #dfe6d3; padding: 36px; display: flex; flex-direction: column; justify-content: space-between;">
+<span style="font-family: Unbounded, sans-serif; font-size: 30px; font-weight: 700; line-height: 1.05;">Подарункові<br>сертифікати</span>
+<span style="font-size: 15px; font-weight: 600;">Від 500 ₴ · миттєво на email або в месенджер →</span>
+</a>
+</div>
+</section>
+
+<section style="padding: 12px 48px 24px; display: flex; justify-content: space-between; align-items: center;">
+<h2 style="margin: 0; font-family: Unbounded, sans-serif; font-weight: 800; font-size: 56px; letter-spacing: -0.04em;">Бестселери</h2>
+<div style="display: flex; gap: 8px;">
+<button type="button" style="border: 2px solid #16110f; background: #16110f; color: #fff; border-radius: 999px; padding: 10px 18px; font: inherit; font-weight: 700; font-size: 14px;">Усі</button>
+<button type="button" style="border: 2px solid #16110f; background: #fff; border-radius: 999px; padding: 10px 18px; font: inherit; font-weight: 700; font-size: 14px;">Троянди</button>
+<button type="button" style="border: 2px solid #16110f; background: #fff; border-radius: 999px; padding: 10px 18px; font: inherit; font-weight: 700; font-size: 14px;">Піони</button>
+<button type="button" style="border: 2px solid #16110f; background: #fff; border-radius: 999px; padding: 10px 18px; font: inherit; font-weight: 700; font-size: 14px;">Мікс</button>
+</div>
+</section>
+
+<section style="padding: 0 48px 48px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+
+<article style="display: flex; flex-direction: column; gap: 12px; height: 100%;">
+<div style="position: relative; height: 360px; border-radius: 32px; background: #ffe3ea; display: flex; align-items: center; justify-content: center;">
+<img src="img/DSC05407.jpg" alt="Закоханість" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+<span style="position: absolute; top: 16px; left: 16px; background: #16110f; color: #fff; font-family: Unbounded, sans-serif; font-size: 12px; font-weight: 700; padding: 8px 12px; border-radius: 999px;">Хіт продажів</span>
+<button type="button" style="position: absolute; right: 16px; bottom: 16px; border: 0; height: 52px; padding: 0 22px; border-radius: 999px; background: #fff; font: inherit; font-weight: 800; font-size: 14px; box-shadow: 0 8px 20px rgba(22,17,15,0.15);">+ У кошик</button>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: flex-start; padding: 0 6px; gap: 10px;">
+<h3 style="margin: 0; font-size: 18px; font-weight: 800; line-height: 1.3; min-height: 2.6em;">Закоханість</h3>
+<span style="font-family: Unbounded, sans-serif; font-size: 18px; font-weight: 700; white-space: nowrap;">4 528 ₴</span>
+</div>
+<span style="padding: 0 6px; font-size: 14px; color: #5b524e;">Троянди, гортензія</span>
+</article>
+
+<article style="display: flex; flex-direction: column; gap: 12px; height: 100%;">
+<div style="position: relative; height: 360px; border-radius: 32px; background: #fff1e8; display: flex; align-items: center; justify-content: center;">
+<img src="img/DSC07365.jpg" alt="Кохання в кожній троянді" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+<span style="position: absolute; top: 16px; left: 16px; background: #16110f; color: #fff; font-family: Unbounded, sans-serif; font-size: 12px; font-weight: 700; padding: 8px 12px; border-radius: 999px;">Сезон</span>
+<button type="button" style="position: absolute; right: 16px; bottom: 16px; border: 0; height: 52px; padding: 0 22px; border-radius: 999px; background: #fff; font: inherit; font-weight: 800; font-size: 14px; box-shadow: 0 8px 20px rgba(22,17,15,0.15);">+ У кошик</button>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: flex-start; padding: 0 6px; gap: 10px;">
+<h3 style="margin: 0; font-size: 18px; font-weight: 800; line-height: 1.3; min-height: 2.6em;">Кохання в кожній троянді</h3>
+<span style="font-family: Unbounded, sans-serif; font-size: 18px; font-weight: 700; white-space: nowrap;">2 449 ₴</span>
+</div>
+<span style="padding: 0 6px; font-size: 14px; color: #5b524e;">Червоні троянди</span>
+</article>
+
+<article style="display: flex; flex-direction: column; gap: 12px; height: 100%;">
+<div style="position: relative; height: 360px; border-radius: 32px; background: #f3ffd0; display: flex; align-items: center; justify-content: center;">
+<img src="img/DSC08769.jpg" alt="Відтінки щастя" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+
+<button type="button" style="position: absolute; right: 16px; bottom: 16px; border: 0; height: 52px; padding: 0 22px; border-radius: 999px; background: #fff; font: inherit; font-weight: 800; font-size: 14px; box-shadow: 0 8px 20px rgba(22,17,15,0.15);">+ У кошик</button>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: flex-start; padding: 0 6px; gap: 10px;">
+<h3 style="margin: 0; font-size: 18px; font-weight: 800; line-height: 1.3; min-height: 2.6em;">Відтінки щастя</h3>
+<span style="font-family: Unbounded, sans-serif; font-size: 18px; font-weight: 700; white-space: nowrap;">3 875 ₴</span>
+</div>
+<span style="padding: 0 6px; font-size: 14px; color: #5b524e;">Мікс сезонних квітів</span>
+</article>
+
+<article style="display: flex; flex-direction: column; gap: 12px; height: 100%;">
+<div style="position: relative; height: 360px; border-radius: 32px; background: #efeaff; display: flex; align-items: center; justify-content: center;">
+<img src="img/DSC06107.jpg" alt="Валентинка" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+<span style="position: absolute; top: 16px; left: 16px; background: #16110f; color: #fff; font-family: Unbounded, sans-serif; font-size: 12px; font-weight: 700; padding: 8px 12px; border-radius: 999px;">−10%</span>
+<button type="button" style="position: absolute; right: 16px; bottom: 16px; border: 0; height: 52px; padding: 0 22px; border-radius: 999px; background: #fff; font: inherit; font-weight: 800; font-size: 14px; box-shadow: 0 8px 20px rgba(22,17,15,0.15);">+ У кошик</button>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: flex-start; padding: 0 6px; gap: 10px;">
+<h3 style="margin: 0; font-size: 18px; font-weight: 800; line-height: 1.3; min-height: 2.6em;">Валентинка</h3>
+<span style="font-family: Unbounded, sans-serif; font-size: 18px; font-weight: 700; white-space: nowrap;">6 637 ₴</span>
+</div>
+<span style="padding: 0 6px; font-size: 14px; color: #5b524e;">Троянди в коробці</span>
+</article>
+
+</section>
+
+<section style="margin: 0 48px; border-radius: 40px; background: #16110f; color: #fff; padding: 48px 56px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 36px;">
+
+<div style="display: flex; flex-direction: column; gap: 10px;"><span style="font-family: Unbounded, sans-serif; font-size: 34px; font-weight: 800; color: #e8d3b0;">2 год</span><span style="font-weight: 800; font-size: 17px;">Швидка доставка</span><span style="font-size: 14px; line-height: 1.55; color: #cfc6c1;">Терміново — від 2 годин після оплати.</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 10px;"><span style="font-family: Unbounded, sans-serif; font-size: 34px; font-weight: 800; color: #e9a9b9;">Фото</span><span style="font-weight: 800; font-size: 17px;">Перед відправкою</span><span style="font-size: 14px; line-height: 1.55; color: #cfc6c1;">Покажемо букет, перш ніж він поїде.</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 10px;"><span style="font-family: Unbounded, sans-serif; font-size: 34px; font-weight: 800; color: #e8d3b0;">1 клік</span><span style="font-weight: 800; font-size: 17px;">Купівля без реєстрації</span><span style="font-size: 14px; line-height: 1.55; color: #cfc6c1;">Телефон — і замовлення оформлене.</span></div>
+
+<div style="display: flex; flex-direction: column; gap: 10px;"><span style="font-family: Unbounded, sans-serif; font-size: 34px; font-weight: 800; color: #e9a9b9;">Бонуси</span><span style="font-weight: 800; font-size: 17px;">За кожне замовлення</span><span style="font-size: 14px; line-height: 1.55; color: #cfc6c1;">Повертаються на ваш рахунок за телефоном.</span></div>
+
+</section>
+
+<section style="padding: 48px 48px 40px; display: flex; flex-direction: column; gap: 22px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px 16px; flex-wrap: wrap;"><h2 style="margin: 0; font-family: Unbounded, sans-serif; font-weight: 800; font-size: 48px; color: #16110f;">Подарунки до букета</h2><span style="font-size: 14px; color: #5b524e;">Додайте в один клік — привеземо разом</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px;">
+<div style="position: relative; overflow: hidden; border-radius: 32px; min-height: 190px; background: #f4f0ec;"><img src="img/cat-presents.jpg" alt="Подарунки EL FLORA" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></div>
+<a href="#" tabindex="-1" style="text-decoration: none; color: #16110f; background: #f4f0ec; border-radius: 32px; padding: 24px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #ffd6e2; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="M4 7l8 6 8-6"></path></svg></span><span style="font-weight: 700; font-size: 16px;">Листівка</span><span style="font-size: 13px; color: #5b524e;">безкоштовно</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #16110f; background: #f4f0ec; border-radius: 32px; padding: 24px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #ffd6e2; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 3h6"></path><path d="M10 3c0 3-3 4-3 9a5 5 0 0 0 10 0c0-5-3-6-3-9"></path></svg></span><span style="font-weight: 700; font-size: 16px;">Ваза</span><span style="font-size: 13px; color: #5b524e;">від 390 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #16110f; background: #f4f0ec; border-radius: 32px; padding: 24px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #ffd6e2; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 10h12l-1.5 9h-9z"></path><path d="M8 10a4 4 0 0 1 8 0"></path></svg></span><span style="font-weight: 700; font-size: 16px;">Солодощі</span><span style="font-size: 13px; color: #5b524e;">від 250 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #16110f; background: #f4f0ec; border-radius: 32px; padding: 24px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #ffd6e2; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="6"></circle><circle cx="7" cy="6.5" r="2.5"></circle><circle cx="17" cy="6.5" r="2.5"></circle></svg></span><span style="font-weight: 700; font-size: 16px;">Мʼяка іграшка</span><span style="font-size: 13px; color: #5b524e;">від 450 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #16110f; background: #f4f0ec; border-radius: 32px; padding: 24px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #ffd6e2; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><ellipse cx="9" cy="8" rx="4" ry="5"></ellipse><ellipse cx="16" cy="9" rx="3.5" ry="4.5"></ellipse><path d="M9 13l1 8M16 13.5l-2 7.5"></path></svg></span><span style="font-weight: 700; font-size: 16px;">Повітряні кульки</span><span style="font-size: 13px; color: #5b524e;">від 90 ₴</span></a>
+</div>
+</section>
+<footer style="margin-top: auto; padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 600;">
+<a href="#" tabindex="-1" aria-label="Elflora — на головну" style="display: flex; align-items: center;"><img src="img/logo.png" alt="Elflora — квіти, Кропивницький" style="height: 44px; width: auto; display: block;"></a>
+<span style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: flex-end;"><span>м. Кропивницький</span><a href="tel:+380993666044" style="color: inherit; text-decoration: none; white-space: nowrap;">+38 (099) 366-60-44</a><a href="mailto:info@elflora.com.ua" style="color: inherit; text-decoration: none;">info@elflora.com.ua</a><span>Доставка · Оплата · Публічна оферта</span></span>
+</footer>
+</div></template>
+<template id="mob-c"><div style="width: 390px; box-sizing: border-box; background: #ffffff; color: #16110f; font-family: Manrope, sans-serif; display: flex; flex-direction: column; position: relative; box-shadow: 0 0 0 1px rgba(0,0,0,0.06);">
+<div style="background: #16110f; color: #fff; font-family: Unbounded, sans-serif; font-size: 11px; padding: 10px 0; display: flex; gap: 24px; white-space: nowrap; overflow: hidden;"><span>✿ Доставка сьогодні</span><span style="color: #e9a9b9;">Фото перед відправкою</span><span>✿ Листівка безкоштовно</span></div>
+<header style="padding: 12px 16px; display: flex; align-items: center; gap: 8px;">
+<a href="#" tabindex="-1" aria-label="Elflora — на головну" style="display: flex; align-items: center; margin-right: auto;"><img src="img/logo.png" alt="Elflora — квіти, Кропивницький" style="height: 38px; width: auto; display: block;"></a>
+<a href="tel:+380993666044" aria-label="Подзвонити: +38 (099) 366-60-44" style="width: 44px; height: 44px; border-radius: 22px; background: #f4f0ec; display: flex; align-items: center; justify-content: center;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16110f" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></a>
+<button type="button" aria-label="Пошук" style="width: 44px; height: 44px; border-radius: 22px; border: 0; background: #f4f0ec;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16110f" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg></button>
+<button type="button" aria-label="Меню" style="width: 44px; height: 44px; border-radius: 22px; border: 0; background: #16110f;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" aria-hidden="true"><path d="M4 8h16M4 16h16"></path></svg></button>
+</header>
+<section style="padding: 0 16px 12px; display: flex; flex-wrap: wrap; gap: 8px;">
+<a href="#" tabindex="-1" style="flex-shrink: 0; text-decoration: none; background: #16110f; color: #fff; padding: 11px 16px; border-radius: 999px; font-weight: 700; font-size: 13px;">Букети</a>
+<a href="#" tabindex="-1" style="flex-shrink: 0; text-decoration: none; background: #f4f0ec; padding: 11px 16px; border-radius: 999px; font-weight: 600; font-size: 13px;">Троянди</a>
+<a href="#" tabindex="-1" style="flex-shrink: 0; text-decoration: none; background: #f4f0ec; padding: 11px 16px; border-radius: 999px; font-weight: 600; font-size: 13px;">Коробки</a>
+</section>
+<section style="margin: 0 12px; border-radius: 32px; background: #ffd6e2; padding: 24px 16px 16px; display: flex; flex-direction: column; gap: 18px;">
+<h1 style="margin: 0 8px; font-family: Unbounded, sans-serif; font-weight: 800; font-size: 40px; line-height: 0.98; letter-spacing: -0.05em;">ДАРУЙ<br>ЕМОЦІЇ,<br><span style="color: #7a1b2b;">НЕ КВІТИ</span></h1>
+<div style="position: relative; height: 240px;">
+<img src="img/buket-kvitkovij-zefir.jpg" alt="Букет «Квітковий зефір»" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 22px;">
+<span style="position: absolute; right: 12px; top: 12px; width: 84px; height: 84px; border-radius: 42px; background: #dfe6d3; display: flex; align-items: center; justify-content: center; text-align: center; font-family: Unbounded, sans-serif; font-weight: 700; font-size: 11px; line-height: 1.2; transform: rotate(10deg);">−15%<br>на перше<br>замовл.</span>
+</div>
+<a href="#" tabindex="-1" style="text-decoration: none; background: #16110f; color: #fff; padding: 16px 24px; border-radius: 999px; font-weight: 800; font-size: 15px; text-align: center;">Обрати букет →</a>
+</section>
+<section style="padding: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+<a href="#" tabindex="-1" style="text-decoration: none; border-radius: 28px; background: #16110f; color: #fff; padding: 20px; height: 140px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;"><span style="font-family: Unbounded, sans-serif; font-size: 16px; font-weight: 700; line-height: 1.1;">Зберіть свій букет</span><span style="font-size: 20px;">→</span></a>
+<a href="#" tabindex="-1" style="text-decoration: none; border-radius: 28px; background: #dfe6d3; padding: 20px; height: 140px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;"><span style="font-family: Unbounded, sans-serif; font-size: 16px; font-weight: 700; line-height: 1.1;">Подарункові сертифікати</span><span style="font-size: 20px;">→</span></a>
+</section>
+<section style="padding: 12px 16px 24px; display: flex; flex-direction: column; gap: 14px;">
+<h2 style="margin: 0; font-family: Unbounded, sans-serif; font-weight: 800; font-size: 30px; letter-spacing: -0.04em;">Бестселери</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+
+<article style="display: flex; flex-direction: column; gap: 8px; height: 100%;">
+<div style="position: relative; height: 210px; border-radius: 24px; background: #ffe3ea; display: flex; align-items: center; justify-content: center;"><img src="img/DSC05407.jpg" alt="Закоханість" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"><button type="button" aria-label="Додати Закоханість у кошик" style="position: absolute; right: 10px; bottom: 10px; width: 44px; height: 44px; border-radius: 22px; border: 0; background: #fff; font-size: 22px; font-weight: 800; box-shadow: 0 6px 16px rgba(22,17,15,0.15);">+</button></div>
+<span style="font-size: 14px; font-weight: 800; padding: 0 4px; line-height: 1.3; min-height: 2.6em;">Закоханість</span>
+<span style="margin-top: auto; font-family: Unbounded, sans-serif; font-size: 15px; font-weight: 700; padding: 0 4px;">4 528 ₴</span>
+</article>
+
+<article style="display: flex; flex-direction: column; gap: 8px; height: 100%;">
+<div style="position: relative; height: 210px; border-radius: 24px; background: #fff1e8; display: flex; align-items: center; justify-content: center;"><img src="img/DSC07365.jpg" alt="Кохання в кожній троянді" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"><button type="button" aria-label="Додати Кохання в кожній троянді у кошик" style="position: absolute; right: 10px; bottom: 10px; width: 44px; height: 44px; border-radius: 22px; border: 0; background: #fff; font-size: 22px; font-weight: 800; box-shadow: 0 6px 16px rgba(22,17,15,0.15);">+</button></div>
+<span style="font-size: 14px; font-weight: 800; padding: 0 4px; line-height: 1.3; min-height: 2.6em;">Кохання в кожній троянді</span>
+<span style="margin-top: auto; font-family: Unbounded, sans-serif; font-size: 15px; font-weight: 700; padding: 0 4px;">2 449 ₴</span>
+</article>
+
+<article style="display: flex; flex-direction: column; gap: 8px; height: 100%;">
+<div style="position: relative; height: 210px; border-radius: 24px; background: #f3ffd0; display: flex; align-items: center; justify-content: center;"><img src="img/DSC08769.jpg" alt="Відтінки щастя" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"><button type="button" aria-label="Додати Відтінки щастя у кошик" style="position: absolute; right: 10px; bottom: 10px; width: 44px; height: 44px; border-radius: 22px; border: 0; background: #fff; font-size: 22px; font-weight: 800; box-shadow: 0 6px 16px rgba(22,17,15,0.15);">+</button></div>
+<span style="font-size: 14px; font-weight: 800; padding: 0 4px; line-height: 1.3; min-height: 2.6em;">Відтінки щастя</span>
+<span style="margin-top: auto; font-family: Unbounded, sans-serif; font-size: 15px; font-weight: 700; padding: 0 4px;">3 875 ₴</span>
+</article>
+
+<article style="display: flex; flex-direction: column; gap: 8px; height: 100%;">
+<div style="position: relative; height: 210px; border-radius: 24px; background: #efeaff; display: flex; align-items: center; justify-content: center;"><img src="img/DSC06107.jpg" alt="Валентинка" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit;"><button type="button" aria-label="Додати Валентинка у кошик" style="position: absolute; right: 10px; bottom: 10px; width: 44px; height: 44px; border-radius: 22px; border: 0; background: #fff; font-size: 22px; font-weight: 800; box-shadow: 0 6px 16px rgba(22,17,15,0.15);">+</button></div>
+<span style="font-size: 14px; font-weight: 800; padding: 0 4px; line-height: 1.3; min-height: 2.6em;">Валентинка</span>
+<span style="margin-top: auto; font-family: Unbounded, sans-serif; font-size: 15px; font-weight: 700; padding: 0 4px;">6 637 ₴</span>
+</article>
+
+</div>
+</section>
+<section style="padding: 8px 16px 24px; display: flex; flex-direction: column; gap: 22px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px 16px; flex-wrap: wrap;"><h2 style="margin: 0; font-family: Unbounded, sans-serif; font-weight: 800; font-size: 28px; color: #16110f;">Подарунки до букета</h2><span style="font-size: 14px; color: #5b524e;">Додайте в один клік — привеземо разом</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+<div style="position: relative; overflow: hidden; border-radius: 24px; min-height: 150px; background: #f4f0ec;"><img src="img/cat-presents.jpg" alt="Подарунки EL FLORA" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;"></div>
+<a href="#" tabindex="-1" style="text-decoration: none; color: #16110f; background: #f4f0ec; border-radius: 24px; padding: 16px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #ffd6e2; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="M4 7l8 6 8-6"></path></svg></span><span style="font-weight: 700; font-size: 14px;">Листівка</span><span style="font-size: 13px; color: #5b524e;">безкоштовно</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #16110f; background: #f4f0ec; border-radius: 24px; padding: 16px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #ffd6e2; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M9 3h6"></path><path d="M10 3c0 3-3 4-3 9a5 5 0 0 0 10 0c0-5-3-6-3-9"></path></svg></span><span style="font-weight: 700; font-size: 14px;">Ваза</span><span style="font-size: 13px; color: #5b524e;">від 390 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #16110f; background: #f4f0ec; border-radius: 24px; padding: 16px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #ffd6e2; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 10h12l-1.5 9h-9z"></path><path d="M8 10a4 4 0 0 1 8 0"></path></svg></span><span style="font-weight: 700; font-size: 14px;">Солодощі</span><span style="font-size: 13px; color: #5b524e;">від 250 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #16110f; background: #f4f0ec; border-radius: 24px; padding: 16px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #ffd6e2; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="6"></circle><circle cx="7" cy="6.5" r="2.5"></circle><circle cx="17" cy="6.5" r="2.5"></circle></svg></span><span style="font-weight: 700; font-size: 14px;">Мʼяка іграшка</span><span style="font-size: 13px; color: #5b524e;">від 450 ₴</span></a><a href="#" tabindex="-1" style="text-decoration: none; color: #16110f; background: #f4f0ec; border-radius: 24px; padding: 16px; display: flex; flex-direction: column; gap: 12px; align-items: flex-start;"><span style="width: 52px; height: 52px; border-radius: 26px; background: #ffd6e2; display: flex; align-items: center; justify-content: center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a1b2b" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><ellipse cx="9" cy="8" rx="4" ry="5"></ellipse><ellipse cx="16" cy="9" rx="3.5" ry="4.5"></ellipse><path d="M9 13l1 8M16 13.5l-2 7.5"></path></svg></span><span style="font-weight: 700; font-size: 14px;">Повітряні кульки</span><span style="font-size: 13px; color: #5b524e;">від 90 ₴</span></a>
+</div>
+</section>
+
+<div style="position: sticky; bottom: 14px; margin: auto 12px 14px; z-index: 5; border-radius: 999px; background: #7a1b2b; color: #fff; padding: 8px 8px 8px 22px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 10px 30px rgba(122,27,43,0.4);">
+<span style="font-size: 14px; font-weight: 700;">2 товари · 3 900 ₴</span>
+<a href="#" tabindex="-1" style="background: #fff; color: #16110f; text-decoration: none; font-weight: 800; font-size: 14px; padding: 13px 20px; border-radius: 999px;">Оформити</a>
+</div>
+</div></template>
+
+<script>
+(function () {
+  var stage = document.getElementById('stage');
+  var state = { k: 'a', v: window.innerWidth < 700 ? 'mob' : 'desk' };
+  try { var h = location.hash.slice(1).split('-'); if (/^[abc]$/.test(h[0])) state.k = h[0]; if (h[1] === 'desk' || h[1] === 'mob') state.v = h[1]; } catch (e) {}
+  function fit() {
+    var el = stage.firstElementChild; if (!el) return;
+    el.style.zoom = state.v === 'desk' ? Math.min(1, (document.documentElement.clientWidth) / 1440) : 1;
+  }
+  function render() {
+    var t = document.getElementById(state.v + '-' + state.k);
+    var wrap = document.createElement('div');
+    wrap.className = 'view sc-' + state.k + (state.v === 'mob' ? ' mob' : '');
+    wrap.style.width = state.v === 'desk' ? '1440px' : '';
+    wrap.appendChild(t.content.cloneNode(true));
+    stage.innerHTML = ''; stage.appendChild(wrap);
+    document.querySelectorAll('.switch [data-k]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.k === state.k)); });
+    document.querySelectorAll('.switch [data-v]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.v === state.v)); });
+    try { history.replaceState(null, '', '#' + state.k + '-' + state.v); } catch (e) {}
+    fit(); window.scrollTo(0, 0);
+  }
+  document.querySelectorAll('.switch [data-k]').forEach(function (b) { b.addEventListener('click', function () { state.k = b.dataset.k; render(); }); });
+  document.querySelectorAll('.switch [data-v]').forEach(function (b) { b.addEventListener('click', function () { state.v = b.dataset.v; render(); }); });
+  // Посилання в макетах — демонстраційні.
+  stage.addEventListener('click', function (e) { var a = e.target.closest('a'); if (a && a.getAttribute('href') === '#') e.preventDefault(); });
+  window.addEventListener('resize', fit);
+  render();
+})();
+</script>
+</body>
+</html>
